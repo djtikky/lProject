@@ -5,7 +5,7 @@
     "class" => "form-register",
 ]) }}
 
-do you want to delete user <br>
+do you want to delete this user <br>
 <h3>{{$showUser->userName}} : {{$showUser->FName}} {{$showUser->Lname}}</h3>
 {{$showUser->depFK()->get()->first()->depName}}<br>
 
