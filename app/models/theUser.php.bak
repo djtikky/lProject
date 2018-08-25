@@ -1,0 +1,18 @@
+<?php
+
+namespace app\models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class theUser extends Model
+{
+     protected $table = 'user';
+	 protected $primaryKey = 'userName';
+	 public $timestamps = false;
+
+public function depFK() {
+
+    return $this->belongsTo('app\models\user','depID','dep');
+}
+}
+?>

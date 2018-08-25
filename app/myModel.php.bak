@@ -1,0 +1,16 @@
+<?php
+
+namespace app;
+
+use Illuminate\Database\Eloquent\Model;
+
+class myModel extends Model
+{
+    protected $table = 'user';
+	    public static function getMyData(){
+			echo ' at myModel model';
+        $user = myModel::find('1');
+		echo $user;
+    }
+}
+?>

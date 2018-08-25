@@ -1,0 +1,18 @@
+<?php
+
+namespace app\models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class dep extends Model
+{
+     protected $table = 'dep';
+	 public $timestamps = false;
+	 	protected $primaryKey = 'id';
+	protected $keyType = 'string';
+	 
+	 public function user()
+	 { return $this->hasMany('app\models\user','dep','depID');
+	 }
+}
+?>

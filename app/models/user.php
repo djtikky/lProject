@@ -1,0 +1,27 @@
+<?php
+namespace app\models;
+
+use Illuminate\Auth\UserTrait;
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
+
+// use Illuminate\Database\Eloquent;
+use Illuminate\Database\Eloquent\Model; // การเรียกใช้งาน Eloquent ใน laravel
+
+class user extends Model 
+//class User extends Eloquent implements UserInterface, RemindableInterface
+{
+
+    protected $table = 'user';
+	protected $primaryKey = 'userName';
+	protected $keyType = 'string';
+	public $timestamps = false;
+
+	public function depFK() {
+
+    return $this->belongsTo('app\models\dep','dep','depID');
+}
+     
+}
+?>

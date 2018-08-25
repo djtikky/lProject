@@ -1,0 +1,39 @@
+<?php
+namespace App\Http\Controllers;
+
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+
+use app\models\testnew;
+use app\myModel;
+use app\myModel1;
+
+class testController extends BaseController
+{
+    public function home()
+    {
+		echo ' at test+home _controller';
+		$testnew =  testnew::getMyData();
+		$ttmyModel =  myModel::getMyData();
+		$ttmyModel1 = myModel1::getMyData();
+		
+		$testnew1  = testnew::all();
+		echo "<br>";
+		foreach($testnew1 as $row)
+		{	
+			echo $row->userName;
+			echo $row->Lname;
+			echo "<br>";
+		}
+
+
+        return view('register/form');
+    }         
+}
+?>

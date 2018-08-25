@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="{{ app()->getLocale() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+
+Welcome to user homepage xxx
+<br>{{$users}}<br>
+new user <a href="addPage">click</a>
+<br>
+
+{{ Form::open([
+    "url" => "user/search",
+    "method" => "POST",
+    "files" => true,
+    "class" => "form-register",
+]) }}
+{{Form::text('searchKey','',
+		['placeholder'=>'username',
+		'class'=>'form-control',
+		'maxlength'=>100]
+		)}}
+{{ Form::submit('Search',['class' => 'btn','name' => 'submitbutton'])}}
+		
+{{ Form::close() }}
+<br>
+<table border =1>
+
+<br><br>
+	<tr><td>First Name</td><td>Last Name</td><td>username</td><td>password</td><td>department</td><td>update</td><td>delete</td></tr>		
+	@foreach($users as $user)
+	<tr>
+	    <td> {{$user->FName}}</td>
+		<td> {{$user->Lname}} </td>
+		<td> {{$user->userName}}</td>
+		<td> {{$user->password}} </td>
+		<td> {{$user->depFK()->get()->first()->depName}}</td>
+		<td> <a href='updatePage/?username={{$user->userName}}'>update </a></td>
+		<td> <a href='deletePage/{{$user->userName}}'>delete </a></td>
+	 </tr>
+	@endforeach
+</table>
+
+    </body>
+</html>
